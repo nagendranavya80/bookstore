@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= book.title %> - Book Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/custom.css">
+</head>
+
+<body class="bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen text-white flex flex-col m-0">
+    <%- include("partials/header") %>
+
+    <main class="grow w-full max-w-6xl mx-auto px-4 py-12">
+        <a href="/" class="inline-flex items-center gap-2 mb-8 text-orange-400 hover:text-orange-300">
+            &larr; Back to books
+        </a>
+
+        <article class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            <img src="<%= book.coverImage || '/assets/images/thumbnail.avif' %>" alt="Cover of <%= book.title %>"
+                referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/images/thumbnail.avif'"
+                class="w-full max-w-md mx-auto rounded-lg shadow-2xl">
+
+            <section class="flex flex-col gap-5">
+                <p class="text-orange-400 uppercase tracking-wide"><%= book.genre %></p>
+                <h1 class="text-4xl font-bold"><%= book.title %></h1>
+                <p class="text-xl text-slate-300">by <%= book.author %></p>
+
+                <div class="flex items-center gap-4">
+                    <span class="text-yellow-400 font-semibold">★ <%= book.rating %> / 10</span>
+                    <span class="text-slate-500">|</span>
+                    <span class="text-2xl text-orange-400 font-bold">₹<%= Number(book.price).toFixed(2) %></span>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold mb-2">About this book</h2>
+                    <p class="text-slate-300 leading-relaxed"><%= book.description %></p>
+                </div>
+
+                <% if (book.createdAt) { %>
+                <p class="text-sm text-slate-500">Added <%= new Date(book.createdAt).toLocaleDateString() %></p>
+                <% } %>
+            </section>
+        </article>
+    </main>
+
+    <%- include("partials/footer.ejs") %>
+</body>
+
+</html>

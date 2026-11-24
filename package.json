@@ -1,0 +1,45 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "Book",
+    "Store"
+  ],
+  "homepage": "https://github.com/ruthlesscalm/bookstore#readme",
+  "bugs": {
+    "url": "https://github.com/ruthlesscalm/bookstore/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruthlesscalm/bookstore.git"
+  },
+  "license": "ISC",
+  "author": "Ruthless Calm",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon",
+    "build": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/css/style.css",
+    "seed": "node database/seed.js",
+    "tailwind": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/css/style.css --watch",
+    "sync": "browser-sync start --proxy \"http://localhost:3000\" --files \"public/css/**/*.css, public/js/**/*.js, views/**/*.html\" --no-open --inject-changes --no-notify"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "file-type": "^22.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.0.2",
+    "multer": "^2.5.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "browser-sync": "^3.0.4",
+    "nodemon": "^3.1.14"
+  }
+}
