@@ -96,6 +96,8 @@ Open [http://localhost:3000/login](http://localhost:3000/login), switch to **Cre
 4. In MongoDB Atlas, create a database user for the app and allow connections from your hosting service. Prefer its documented outbound IPs; if those aren't available, an Atlas access-list entry of `0.0.0.0/0` allows connections from anywhere, so use a strong database password and a minimally privileged user.
 5. Deploy, then open the Render URL. If the Atlas database is empty, run `npm run seed` locally with `MONGODB_URI` set to that database.
 
+The server starts listening only after MongoDB connects. If startup fails, check that `MONGODB_URI` is set correctly in Render and that the Atlas database user, password, and Network Access allowlist permit the connection. URL-encode special characters in the database password.
+
 Sample covers are hosted by Open Library. Uploaded cover files are stored locally under `public/uploads`; on hosts with an ephemeral filesystem, uploaded covers may disappear after a restart or redeploy. Use persistent storage or an image-storage service such as Cloudinary if you need uploaded photos to remain available.
 
 ## License

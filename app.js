@@ -19,8 +19,6 @@ if (!process.env.JWT_SECRET_KEY) {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const __rootDir = __dirname;
 
-connectDB();
-
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -32,7 +30,15 @@ app.use(pagesRouter);
 app.use("/api/books", booksRouter);
 app.use("/api/auth", authRouter);
 
-app.listen(PORT, hostname, () => {
-    console.log(`Server running on ${PORT}`);
+const startServer = async () => {
+    await connectDB();
+    app.listen(PORT, hostname, () => {
+        console.log(`Server running on ${PORT}`);
+    });
+};
+
+startServer().catch((error) => {
+    console.error("Failed to start server:", error);
+    process.exit(1);
 });
 
