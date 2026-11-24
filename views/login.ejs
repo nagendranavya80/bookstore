@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store - Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/custom.css">
+</head>
+
+<body class="bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen text-white flex flex-col m-0">
+    <%- include("partials/header") %>
+
+    <main class="grow w-full max-w-xl mx-auto px-4 py-12">
+        <section class="bg-slate-800 rounded-lg p-8 shadow-2xl border border-slate-700">
+            <h2 id="formTitle" class="text-3xl font-bold text-orange-400 mb-6">Log in</h2>
+
+            <form id="loginForm" class="flex flex-col gap-5">
+                <label class="flex flex-col gap-2">
+                    <span class="font-semibold">Email</span>
+                    <input type="email" name="email" autocomplete="email" required
+                        class="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </label>
+                <label class="flex flex-col gap-2">
+                    <span class="font-semibold">Password</span>
+                    <input type="password" name="password" autocomplete="current-password" required
+                        class="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </label>
+                <button type="submit"
+                    class="px-4 py-3 bg-orange-600 hover:bg-orange-700 rounded-lg font-semibold">Log in</button>
+            </form>
+
+            <form id="registerForm" class="hidden flex-col gap-5">
+                <label class="flex flex-col gap-2">
+                    <span class="font-semibold">Email</span>
+                    <input type="email" name="email" autocomplete="email" required
+                        class="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </label>
+                <label class="flex flex-col gap-2">
+                    <span class="font-semibold">Password (at least 8 characters)</span>
+                    <input type="password" name="password" autocomplete="new-password" minlength="8" maxlength="72" required
+                        class="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </label>
+                <button type="submit"
+                    class="px-4 py-3 bg-orange-600 hover:bg-orange-700 rounded-lg font-semibold">Create account</button>
+            </form>
+
+            <p id="authMessage" class="mt-5 text-slate-300" role="status" aria-live="polite"></p>
+            <p class="mt-5 text-slate-400">
+                <span id="switchPrompt">New here?</span>
+                <button id="switchForm" type="button" class="text-orange-400 hover:text-orange-300 underline">Create an account</button>
+            </p>
+        </section>
+    </main>
+
+    <%- include("partials/footer.ejs") %>
+    <script src="/js/auth.js" defer></script>
+</body>
+
+</html>
